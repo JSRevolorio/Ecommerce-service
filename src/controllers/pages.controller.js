@@ -4,6 +4,7 @@ import Categoria from './categoria.controller';
 import Compra    from  './compra.controller';
 import RVenta    from  './reporteVenta.controller';
 import RCompra   from  './reporteCompra.controller';
+import RInventario from './reporteInventario.controller';
 
 const pages = {
     producto  : Producto,
@@ -12,6 +13,7 @@ const pages = {
     compra    : Compra,
     rVenta    : RVenta,
     rCompra   : RCompra,
+    rInventario : RInventario
 }
 
 export {pages};

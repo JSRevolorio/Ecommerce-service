@@ -46,6 +46,9 @@ export default async () => {
             final  : form.get('fechaFinal'),
         }
 
+        Element.querySelector(".tabla-ListaReporteCompra").innerHTML = "";
+
+
         var reportes = await searchForCompras(fecha);
 
         var Total = 0;

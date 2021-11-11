@@ -37,6 +37,8 @@ export default async () => {
                 final  : form.get('fechaFinal'),
             }
     
+            Element.querySelector(".tabla-ListaReporteVentas").innerHTML = "";
+
             var reportes = await searchForVentas(fecha);
 
             console.log(reportes);
@@ -45,7 +47,7 @@ export default async () => {
             reportes.forEach(factura => {
                 Element.querySelector('.tabla-ListaReporteVentas').innerHTML +=`
                 <tr id="${factura.id}">
-                <th scope="row">${factura.id}</th>
+        
                 <td>${factura.serie}</td>
                 <td>${factura.numeroFactura}</td>
                 <td>${factura.fecha.toString().substring(0,10)}</td>

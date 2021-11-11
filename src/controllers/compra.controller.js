@@ -262,7 +262,7 @@ export default async () => {
     on(Element, 'click', '#RedireccionaProducto', e => {
         modalAdd.hide();
 
-        window.location.href = 'http://localhost:8080/#/Productos';
+        window.location.href = 'http://localhost:3001/#/Productos';
     });
 
     return Element;
