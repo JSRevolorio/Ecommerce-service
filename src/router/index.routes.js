@@ -33,6 +33,10 @@ const router = async (route) => {
         case '#/resumen':{
             return root.appendChild(await pages.resumen())
         }
+        case '#/RInventario':{
+            return root.appendChild(await pages.rinventario())
+        }
+
         case '#/Cerra':{
             location.reload(true);
         }

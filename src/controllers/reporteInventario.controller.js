@@ -1,6 +1,23 @@
 import view from "../views/reporteInventario.html";
 import * as bootstrap from "bootstrap";
 
+const URL = 'https://localhost:44366/api/Inventario';
+
+const getExistencia = async () =>{
+    try {
+        const response = await fetch(URL,{ method: 'GET'});
+
+        if(!response.ok){
+            throw new Error(response.statusText);
+        }
+
+        return await response.json();
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const searchForInvenario = async (producto) => {
   try {
     return await fetch(
@@ -30,14 +47,23 @@ export default async () => {
     });
   };
 
+  var productos = await getExistencia();
+
+  var valuesProductos = Element.querySelector('.ListProductos');
+    valuesProductos.innerHTML = "";
+    valuesProductos.innerHTML = `<option id="0" value="0">Seleccione un producto</option>`;
+    productos.forEach(producto => {
+        valuesProductos.innerHTML += `<option id="${producto.idProducto}" value="${producto.idProducto}">${producto.nombreProducto}</option>`;
+    });
+
+
   on(Element, "click", "#ListarReporteInventario", async (e) => {
-    const formulario = Element.querySelector("#formReporteInventario");
-    const form = new FormData(formulario);
+    const combo = Element.querySelector("#IDSelectProducto");
 
     var producto = {
-      nombre: form.get("productoNombre"),
+      nombre: combo.options[combo.selectedIndex].text
     };
-
+console.log(producto);
     Element.querySelector(".tabla-ListaReporteInventario").innerHTML = "";
 
     var reportes = await searchForInvenario(producto);

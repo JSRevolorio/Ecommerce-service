@@ -7,6 +7,7 @@ import RVenta    from  './reporteVenta.controller';
 import RCompra   from  './reporteCompra.controller';
 import Existencia from './existencia.controller';
 import Resumen   from  './resumen.controller';
+import RInventario from './reporteInventario.controller';
 
 const pages = {
     producto  : Producto,
@@ -17,7 +18,8 @@ const pages = {
     rCompra   : RCompra,
     usuario   : Usuario,
     existencia : Existencia,
-    resumen    : Resumen
+    resumen    : Resumen,
+    rinventario : RInventario
 }
 
 export {pages};
