@@ -6,6 +6,9 @@ const router = async (route) => {
     root.innerHTML = '';
 
     switch(route) {
+        case '#/Usuario':{
+            return root.appendChild(await pages.usuario())
+        }
         case '#/Productos':{
             return root.appendChild(await pages.producto())
         }
@@ -24,8 +27,11 @@ const router = async (route) => {
         case '#/RCompra':{
             return root.appendChild(await pages.rCompra())
         }
-        case '#/RInventario':{
-            return root.appendChild(await pages.rInventario())
+        case '#/existencia':{
+            return root.appendChild(await pages.existencia())
+        }
+        case '#/resumen':{
+            return root.appendChild(await pages.resumen())
         }
         case '#/Cerra':{
             location.reload(true);

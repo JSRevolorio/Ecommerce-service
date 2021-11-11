@@ -98,8 +98,8 @@ export default async () => {
         <tr id="${producto.idProducto}">
         <th scope="row">${producto.idProducto}</th>
         <td>${producto.nombre}</td>  
-        <td>${producto.precioUnidadConIva}</td>    
-        <td>${producto.precioUnidadSinIva}</td>
+        <td>${producto.precioUnidadConIva.toFixed(2)}</td>    
+        <td>${parseFloat(producto.precioUnidadSinIva).toFixed(2)}</td>
         <td>${(precioDeCompra * 1.10).toFixed(2)}</td>
         <td>${producto.cantidad}</td>
         <td>${producto.cantidad * producto.precioUnidadConIva}</td>
@@ -166,8 +166,8 @@ export default async () => {
         <tr id="${producto.idProducto}">
         <th scope="row">${producto.idProducto}</th>
         <td>${producto.nombre}</td>  
-        <td>${producto.precioUnidadConIva}</td>    
-        <td>${producto.precioUnidadSinIva}</td>
+        <td>${producto.precioUnidadConIva.toFixed(2)}</td>    
+        <td>${parseFloat(producto.precioUnidadSinIva).toFixed(2)}</td>
         <td>${(precioDeCompra * 1.10).toFixed(2)}</td>
         <td>${producto.cantidad}</td>
         <td>${producto.cantidad * producto.precioUnidadConIva}</td>
@@ -203,7 +203,7 @@ export default async () => {
             numeroFactura : form.get('numeroFactura'),
             idProveedor   : parseInt(form.get('idProveedor')),
             idEmpleado    : 2,
-            totalConIva   : total,
+            totalConIva   : parseFloat(total),
             compraDetalles : []
         }
 
@@ -237,11 +237,11 @@ export default async () => {
         var resume_table = Element.querySelector('#Tabla-Productos-row');
 
         for (var i = 1, row; row = resume_table.rows[i]; i++) {
-            total +=  parseInt(row.cells[6].innerText)
+            total +=  parseFloat(row.cells[6].innerText);
         }
 
-        idTotalFactura.value = total;
-        return total;
+        idTotalFactura.value = total.toFixed(2);
+        return total.toFixed(2);
     }
 
     on(Element, 'change', '#idPrecioCompra', (e) => {
@@ -255,7 +255,7 @@ export default async () => {
     on(Element, 'change', '#idEditPrecioCompra', (e) => {
         var precioDeCompra = parseFloat(Element.querySelector('#idEditPrecioCompra').value) * 1.10;
 
-        Element.querySelector("#idEditPrecioDeVentaIva").value = precioDeCompra.toFixed(2);
+        Element.querySelector("#idEditPrecioDeVentaIva").value    = precioDeCompra.toFixed(2);
         Element.querySelector('#idEditPrecioDeVentaSinIva').value = (precioDeCompra / 1.12).toFixed(2);
     });
 
